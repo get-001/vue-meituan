@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import '@/plugins/index.less';
 
 Vue.use(Vuex)
 

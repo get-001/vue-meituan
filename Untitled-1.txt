@@ -1,0 +1,13 @@
+$ vue create vue-test                -- 创建项目(模板)
+$ vue serve src/App.vue --open       -- 编译运行.vue文件
+$ vue ui                             -- 打开UI面板来构建一个项目、
+$ npm run build                      -- 将项目打包、
+$ npm run serve                      -- 编译运行项目
+
+$ vue add router                     -- 安装路由插件
+$ vue add axios                      -- 安装ajax插件
+$ vue add vuex                       -- 集中式存储管理
+$ vue add element                    -- Element-Ui 组件库
+
+npm install --save qrcode            -- 安装插件
+npm uninstall qrcode                 -- 卸载插件
