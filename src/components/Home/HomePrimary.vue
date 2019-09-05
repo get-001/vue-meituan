@@ -93,10 +93,6 @@ import { AppData } from "./data.js";
 
 export default {
   components: { ClassificationsDetailedWrap },
-  mounted() {
-    // console.log(AppData);
-    console.log(this.categorys);
-  },
   data() {
     return {
       slideshowData: [

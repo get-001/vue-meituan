@@ -1,19 +1,33 @@
 <template>
   <div class="ModalTabControl">
-    <div class="Control-head">
-      <h2 class="headline">猜你喜欢</h2>
-      <ul class="tab-view clearFloat">
-        <li>全部</li>
-        <li>约会聚餐</li>
-        <li>丽人SPA</li>
-        <li>品质出游</li>
+    <div class="Control-head" :style="{'background':headColor}">
+      <h2 class="headline">{{title}}</h2>
+      <ul class="tab clearFloat">
+        <li :class="{active:active===index}" v-for="(item, index) in tabs" :key="index" @mouseenter="selectionPages(index)">{{item.text}}</li>
       </ul>
     </div>
-    <div class="Control-body"></div>
+    <div class="Control-body">
+      <slot />
+    </div>
   </div>
 </template>
 
-
+<script>
+export default {
+    props:['title','tabs','headColor'],
+    data() {
+        return {
+            active:0
+        }
+    },
+    methods:{
+        selectionPages(index){
+            this.active=index;
+            this.$emit('selectionPages',index)
+        }
+    }
+}
+</script>
 
 <style lang="less" scoped>
 * {
@@ -24,7 +38,6 @@
 }
 
 .ModalTabControl {
-  margin-bottom: 40px;
   .Control-head {
     color: #fff;
     height: 44px;
@@ -44,7 +57,7 @@
       margin-right: 10px;
       line-height: 44px;
     }
-    ul.tab-view {
+    ul.tab {
       display: inline-block;
       font-size: 15px;
       vertical-align: top;
@@ -53,11 +66,23 @@
         line-height: 44px;
         padding: 0 5px;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      li.active::after{
+          position: absolute;
+          bottom: -17px;
+          left: 50%;
+          content: "";
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background: #fff;
+          transform: translateX(-50%) rotate(45deg);
       }
     }
   }
   .Control-body {
-    height: 500px;
     background: #fff;
     border-radius: 0 0 6px 6px;
     border-left: 1px solid #e5e5e5;
